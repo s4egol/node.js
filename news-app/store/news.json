@@ -1,7 +1,1 @@
-{
-"News": [
-	{"Id": 1, "Name": "codeforgeek", "Url": "https://codeforgeek.com/2014/09/handle-get-post-request-express-4/"},
-	{"Id": 2, "Name": "developer", "Url": "https://developer.mozilla.org/ru/docs/Learn/Server-side/Express_Nodejs/skeleton_website"},
-	{"Id": 3, "Name": "expressjs", "Url": "http://expressjs.com/ru/starter/generator.html"}
-]
-}
+[{"id":1,"name":"grow","url":"https://grow.epam.com"},{"id":2,"name":"JsonEditor","url":"https://jsoneditoronline.org/#/"},{"id":3,"name":"Yandex","url":"https://yandex.by/"},{"id":4,"name":"updated","url":"dsffds"}]
