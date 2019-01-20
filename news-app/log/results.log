@@ -84,3 +84,27 @@
 2019-01-20 03:02:56 info: Write data to file: './store/news.json'
 2019-01-20 03:03:01 info: GET request to localhost/news
 2019-01-20 03:03:01 info: Read data from file: './store/news.json'
+2019-01-20 18:53:36 info: GET request to localhost/news
+2019-01-20 18:54:14 info: GET request to localhost/news
+2019-01-20 18:54:14 error: news is not defined
+2019-01-20 18:54:24 info: GET request to localhost/news
+2019-01-20 18:54:24 error: news is not defined
+2019-01-20 18:54:28 info: GET request to localhost/news
+2019-01-20 18:56:21 info: GET request to localhost/news
+2019-01-20 18:56:25 info: GET request to localhost/news
+2019-01-20 18:56:25 error: news is not defined
+2019-01-20 18:58:25 info: GET request to localhost/news
+2019-01-20 18:58:25 error: obj is not defined
+2019-01-20 18:58:32 info: GET request to localhost/news
+2019-01-20 18:58:32 error: obj is not defined
+2019-01-20 18:58:42 info: GET request to localhost/news
+2019-01-20 18:59:14 info: GET request to localhost/news
+2019-01-20 18:59:17 info: GET request to localhost/news
+2019-01-20 18:59:52 info: GET request to localhost/news
+2019-01-20 19:00:24 info: POST request to localhost/news
+2019-01-20 19:00:29 info: GET request to localhost/news
+2019-01-20 19:00:56 info: PUT request to localhost/news
+2019-01-20 19:01:24 info: GET request to localhost/news
+2019-01-20 19:01:35 info: DELETE request to localhost/news
+2019-01-20 19:01:35 error: Cannot set headers after they are sent to the client
+2019-01-20 19:01:39 info: GET request to localhost/news
