@@ -1,2 +1,86 @@
 2019-01-16 04:51:56 info: GET request to /news
 2019-01-16 04:52:58 info: GET request to localhost/news
+2019-01-19 16:27:01 info: GET request to localhost/news
+2019-01-19 16:27:01 info: Read data from file: './store/news.json'
+2019-01-19 16:27:01 error: Unexpected token o in JSON at position 1
+2019-01-19 16:31:19 info: GET request to localhost/news
+2019-01-19 16:31:19 info: Read data from file: './store/news.json'
+2019-01-19 16:32:25 info: GET request to localhost/news
+2019-01-19 16:32:25 info: Read data from file: './store/news.json'
+2019-01-19 16:34:25 info: GET request to localhost/news
+2019-01-19 16:34:25 info: Read data from file: './store/news.json'
+2019-01-19 17:06:44 info: GET request to localhost/news
+2019-01-19 17:06:44 info: Read data from file: './store/news.json'
+2019-01-20 01:05:08 info: GET request to localhost/news
+2019-01-20 01:05:08 info: Read data from file: './store/news.json'
+2019-01-20 01:36:56 info: GET request to localhost/news
+2019-01-20 01:36:56 info: Read data from file: './store/news.json'
+2019-01-20 01:36:56 error: x is not defined
+2019-01-20 01:39:49 info: GET request to localhost/news
+2019-01-20 01:39:49 info: Read data from file: './store/news.json'
+2019-01-20 01:39:49 error: x is not defined
+2019-01-20 01:40:17 info: GET request to localhost/news
+2019-01-20 01:40:17 info: Read data from file: './store/news.json'
+2019-01-20 01:40:17 error: x is not defined
+2019-01-20 01:41:20 info: GET request to localhost/news
+2019-01-20 01:41:20 info: Read data from file: './store/news.json'
+2019-01-20 02:07:35 info: GET request to localhost/news
+2019-01-20 02:07:35 info: Read data from file: './store/news.json'
+2019-01-20 02:08:32 info: GET request to localhost/news
+2019-01-20 02:08:32 info: Read data from file: './store/news.json'
+2019-01-20 02:08:33 info: GET request to localhost/news
+2019-01-20 02:08:33 info: Read data from file: './store/news.json'
+2019-01-20 02:40:14 info: GET request to localhost/news
+2019-01-20 02:40:14 info: Read data from file: './store/news.json'
+2019-01-20 02:40:47 info: GET request to localhost/news
+2019-01-20 02:40:47 info: Read data from file: './store/news.json'
+2019-01-20 02:41:22 info: POST request to localhost/news
+2019-01-20 02:41:22 info: Read data from file: './store/news.json'
+2019-01-20 02:41:22 info: Write data to file: './store/news.json'
+2019-01-20 02:41:43 info: GET request to localhost/news
+2019-01-20 02:41:43 info: Read data from file: './store/news.json'
+2019-01-20 02:42:00 info: POST request to localhost/news
+2019-01-20 02:43:06 info: GET request to localhost/news
+2019-01-20 02:43:06 info: Read data from file: './store/news.json'
+2019-01-20 02:44:33 info: POST request to localhost/news
+2019-01-20 02:44:33 info: Read data from file: './store/news.json'
+2019-01-20 02:44:33 info: Write data to file: './store/news.json'
+2019-01-20 02:44:33 error: Cannot set headers after they are sent to the client
+2019-01-20 02:45:05 info: GET request to localhost/news
+2019-01-20 02:45:05 info: Read data from file: './store/news.json'
+2019-01-20 02:45:14 info: GET request to localhost/news
+2019-01-20 02:45:14 info: Read data from file: './store/news.json'
+2019-01-20 02:54:39 info: GET request to localhost/news
+2019-01-20 02:54:39 info: Read data from file: './store/news.json'
+2019-01-20 02:55:09 info: POST request to localhost/news
+2019-01-20 02:55:09 info: Read data from file: './store/news.json'
+2019-01-20 02:55:09 info: Write data to file: './store/news.json'
+2019-01-20 02:55:09 error: Cannot set headers after they are sent to the client
+2019-01-20 02:55:15 info: GET request to localhost/news
+2019-01-20 02:55:15 info: Read data from file: './store/news.json'
+2019-01-20 02:57:41 info: GET request to localhost/news
+2019-01-20 02:57:41 info: Read data from file: './store/news.json'
+2019-01-20 02:57:46 info: POST request to localhost/news
+2019-01-20 02:57:50 info: GET request to localhost/news
+2019-01-20 02:57:50 info: Read data from file: './store/news.json'
+2019-01-20 03:01:11 info: DELETE request to localhost/news
+2019-01-20 03:01:11 info: Read data from file: './store/news.json'
+2019-01-20 03:01:11 info: Write data to file: './store/news.json'
+2019-01-20 03:01:16 info: DELETE request to localhost/news
+2019-01-20 03:01:16 info: Read data from file: './store/news.json'
+2019-01-20 03:01:16 info: Write data to file: './store/news.json'
+2019-01-20 03:01:20 info: GET request to localhost/news
+2019-01-20 03:01:20 info: Read data from file: './store/news.json'
+2019-01-20 03:01:31 info: DELETE request to localhost/news
+2019-01-20 03:01:31 info: Read data from file: './store/news.json'
+2019-01-20 03:01:31 info: Write data to file: './store/news.json'
+2019-01-20 03:02:04 info: GET request to localhost/news
+2019-01-20 03:02:04 info: Read data from file: './store/news.json'
+2019-01-20 03:02:11 info: POST request to localhost/news
+2019-01-20 03:02:16 info: GET request to localhost/news
+2019-01-20 03:02:16 info: Read data from file: './store/news.json'
+2019-01-20 03:02:56 info: PUT request to localhost/news
+2019-01-20 03:02:56 info: Read data from file: './store/news.json'
+2019-01-20 03:02:56 info: Write data to file: './store/news.json'
+2019-01-20 03:03:01 info: GET request to localhost/news
+2019-01-20 03:03:01 info: Read data from file: './store/news.json'
