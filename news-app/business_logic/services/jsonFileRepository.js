@@ -2,7 +2,7 @@ const fs = require('fs');
 const util = require('util');
 const { logger } = require('../../logger/winston-logger.js');
 
-class JsonFileService {
+class JsonFileRepository {
 
     constructor(jsonFilePath) {
         this.path = jsonFilePath;
@@ -24,4 +24,4 @@ class JsonFileService {
     }
 }
 
-module.exports = { JsonFileService }
+module.exports = { JsonFileRepository }

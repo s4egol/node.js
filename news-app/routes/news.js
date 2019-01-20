@@ -2,14 +2,14 @@ const express = require('express');
 const bodyParser = require("body-parser");
 const createError = require('http-errors');
 const { logger } = require('../logger/winston-logger.js');
-const { JsonFileService } = require('../business_logic/services/jsonFileService.js');
+const { JsonFileRepository } = require('../business_logic/services/jsonFileRepository.js');
 const { check, validationResult } = require('express-validator/check');
 
 const router = express.Router();
 const jsonParser = bodyParser.json();
 
 const jsonFilePath = './store/news.json';
-const jsonService = new JsonFileService(jsonFilePath);
+const jsonService = new JsonFileRepository(jsonFilePath);
 
 const validateBody = () => {
     return [
