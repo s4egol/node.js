@@ -108,3 +108,21 @@
 2019-01-20 19:01:35 info: DELETE request to localhost/news
 2019-01-20 19:01:35 error: Cannot set headers after they are sent to the client
 2019-01-20 19:01:39 info: GET request to localhost/news
+2019-01-20 19:35:17 info: GET request to localhost/news
+2019-01-20 19:35:23 info: GET request to localhost/news
+2019-01-20 19:35:23 error: Not Found
+2019-01-20 19:35:28 info: GET request to localhost/news
+2019-01-20 19:35:28 error: Not Found
+2019-01-20 19:41:45 info: GET request to localhost/news
+2019-01-20 19:41:50 info: GET request to localhost/news
+2019-01-20 19:42:20 info: GET request to localhost/news
+2019-01-20 20:47:49 info: GET request to localhost/news
+2019-01-20 20:52:35 info: GET request to localhost/news
+2019-01-20 20:57:05 info: GET request to localhost/news
+2019-01-20 20:57:09 info: GET request to localhost/news
+2019-01-20 21:00:19 info: GET request to localhost/news
+2019-01-20 21:01:33 info: GET request to localhost/news
+2019-01-20 21:05:25 info: GET request to localhost/news
+2019-01-23 01:59:46 info: GET request to localhost/news
+2019-01-23 02:01:35 info: GET request to localhost/news
+2019-01-23 02:02:33 info: GET request to localhost/news
