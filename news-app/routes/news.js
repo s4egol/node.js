@@ -3,12 +3,14 @@ const bodyParser = require("body-parser");
 const createError = require('http-errors');
 const wrap = require('async-middleware').wrap;
 const { logger } = require('../logger/winston-logger.js');
-const { JsonFileRepository } = require('../business_logic/services/jsonFileRepository.js');
+const { JsonFileRepository } = require('../business_logic/repositories/jsonFileRepository.js');
+const { NewsRepository } = require('../business_logic/repositories/newsRepository.js')
 const { check, validationResult } = require('express-validator/check');
 
+const app = express();
 const router = express.Router();
 
-const jsonFilePath = './store/news.json';
+const jsonFilePath = './storee/news.json';
 const jsonRepository = new JsonFileRepository(jsonFilePath);
 
 const validateBody = () => {
@@ -18,19 +20,26 @@ const validateBody = () => {
     ];
 }
 
-router.use(express.json());
-
-router.get('/', wrap(async (request, response, next) => {
-    logger.info(`GET request to ${request.hostname}${request.baseUrl}`);
-
-    const data = await jsonRepository.readItem();       
-    response.send(data);
+app.use(wrap(function (req, res) {
+    return Promise.reject(x => {
+        logger.error(x);
+        next(createError(500));
+    })
 }));
 
-router.get('/:id', wrap(async (request, response, next) => {
+router.use(express.json());
+
+router.get('/', async (request, response, next) => {
     logger.info(`GET request to ${request.hostname}${request.baseUrl}`);
 
-    const item = await jsonRepository.readItem(request.params.id);
+    const data = await new NewsRepository().readItem();       
+    response.send(data);
+});
+
+router.get('/:id', wrap(async (request, response, next) => {
+    logger.info(`GET request to ${request.hostname}${request.baseUrl}/${request.params.id}`);
+
+    const item = await new NewsRepository().readItem(request.params.id);
     
     if (item != null){
         response.send(item);
@@ -48,7 +57,7 @@ router.post('/', validateBody(), wrap(async (request, response, next) => {
 
     let newContent = { name: request.body.name, url: request.body.url };
 
-    await jsonRepository.createItem(newContent);
+    await new NewsRepository().createItem(newContent);
     response.send(`Added new content with name ${newContent.name}`);
 }));
 
@@ -61,7 +70,7 @@ router.put('/:id', validateBody(), wrap(async (request, response, next) => {
 
     let newContent = { name: request.body.name, url: request.body.url };
 
-    if (await jsonRepository.updateItem(request.params.id, newContent)) {
+    if (await new NewsRepository().updateItem(request.params.id, newContent)) {
         response.send(`Updated entity with id: '${request.params.id}'`);
     }
     
@@ -71,7 +80,7 @@ router.put('/:id', validateBody(), wrap(async (request, response, next) => {
 router.delete('/:id', wrap(async (request, response, next) => {
     logger.info(`DELETE request to ${request.hostname}${request.baseUrl}`);
 
-    if (await jsonRepository.deleteItem(request.params.id)) {
+    if (await new NewsRepository().deleteItem(request.params.id)) {
         response.send(`News with id: '${request.params.id}' was deleted`);
     }
     
