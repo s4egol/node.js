@@ -3,8 +3,16 @@ var Schema = mongoose.Schema;
 
 const userName = "Users";
 const userSchema = new Schema({
-    username: String,
-    password: String
+    email: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    }
 });
 
-module.exports = { userName, userSchema }
+const User = mongoose.model(userName, userSchema)
+
+module.exports = User;

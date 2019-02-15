@@ -1,11 +1,12 @@
 const express = require('express');
-const bodyParser = require("body-parser");
+const passport = require('passport');
 const createError = require('http-errors');
 const wrap = require('async-middleware').wrap;
 const { logger } = require('../logger/winston-logger.js');
 const { JsonFileRepository } = require('../business_logic/repositories/jsonFileRepository.js');
 const { NewsRepository } = require('../business_logic/repositories/newsRepository.js')
 const { check, validationResult } = require('express-validator/check');
+const { ensureAuthenticated } = require('../config/auth.js');
 
 const app = express();
 const router = express.Router();
@@ -29,11 +30,11 @@ app.use(wrap(function (req, res) {
 
 router.use(express.json());
 
-router.get('/', async (request, response, next) => {
-    logger.info(`GET request to ${request.hostname}${request.baseUrl}`);
+router.get('/', async (req, res, next) => {
+    logger.info(`GET request to ${req.hostname}${req.baseUrl}`);
 
     const data = await new NewsRepository().readItem();       
-    response.send(data);
+    res.send(data);
 });
 
 router.get('/:id', wrap(async (request, response, next) => {
@@ -63,6 +64,7 @@ router.post('/', validateBody(), wrap(async (request, response, next) => {
 
 router.put('/:id', validateBody(), wrap(async (request, response, next) => {
     logger.info(`PUT request to ${request.hostname}${request.baseUrl}`);
+    ensureAuthenticated(request, response, next);
 
     if (!validationResult(request).isEmpty()) {
         return next(createError(422));
@@ -79,6 +81,7 @@ router.put('/:id', validateBody(), wrap(async (request, response, next) => {
 
 router.delete('/:id', wrap(async (request, response, next) => {
     logger.info(`DELETE request to ${request.hostname}${request.baseUrl}`);
+    ensureAuthenticated(request, response, next);
 
     if (await new NewsRepository().deleteItem(request.params.id)) {
         response.send(`News with id: '${request.params.id}' was deleted`);

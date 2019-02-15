@@ -8,4 +8,6 @@ const newsSchema = new Schema({
     url: String
 });
 
-module.exports = { newsName, newsSchema }
+const News =  mongoose.model(newsName, newsSchema);
+
+module.exports = News;
