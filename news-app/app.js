@@ -19,8 +19,8 @@ const app = express();
 //passport config
 require('./config/passport.js')(passport);
 
-//facebool passport config
-require('./config/facebook-passport.js')(passport);
+//vk passport config
+require('./config/vk-passport.js')(passport);
 
 //db connection
 const connectionString = require('./config/keys.js').ConnectionString;
@@ -55,6 +55,12 @@ app.use((req, res, next) => {
   res.locals.error = req.flash('error');
   next();
 });
+
+app.get('/auth/vkontakte', passport.authenticate('vkontakte'));
+app.get('/auth/vkontakte/callback', passport.authenticate('vkontakte', { 
+      successRedirect: '/news',
+      failureRedirect: '/users/login' })
+);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
