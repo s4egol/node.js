@@ -5,21 +5,12 @@ const wrap = require('async-middleware').wrap;
 const { logger } = require('../logger/winston-logger.js');
 const { JsonFileRepository } = require('../business_logic/repositories/jsonFileRepository.js');
 const { NewsRepository } = require('../business_logic/repositories/newsRepository.js')
-const { check, validationResult } = require('express-validator/check');
+const { validationResult } = require('express-validator/check');
 const { ensureAuthenticated } = require('../config/auth.js');
+const { validateNewsBody } = require('../validation/paramsValidation.js');
 
 const app = express();
 const router = express.Router();
-
-const jsonFilePath = './storee/news.json';
-const jsonRepository = new JsonFileRepository(jsonFilePath);
-
-const validateBody = () => {
-    return [
-        check('url').isURL(),
-        check('name').isLength({ min: 3 })
-    ];
-}
 
 app.use(wrap(function (req, res) {
     return Promise.reject(x => {
@@ -30,12 +21,12 @@ app.use(wrap(function (req, res) {
 
 router.use(express.json());
 
-router.get('/', async (req, res, next) => {
+router.get('/', wrap(async (req, res, next) => {
     logger.info(`GET request to ${req.hostname}${req.baseUrl}`);
 
     const data = await new NewsRepository().readItem();       
     res.send(data);
-});
+}));
 
 router.get('/:id', wrap(async (request, response, next) => {
     logger.info(`GET request to ${request.hostname}${request.baseUrl}/${request.params.id}`);
@@ -49,7 +40,7 @@ router.get('/:id', wrap(async (request, response, next) => {
     return next(createError(404));
 }));
 
-router.post('/', validateBody(), wrap(async (request, response, next) => {
+router.post('/', validateNewsBody(), wrap(async (request, response, next) => {
     logger.info(`POST request to ${request.hostname}${request.baseUrl}`);
     
     if (!validationResult(request).isEmpty()) {
@@ -62,7 +53,7 @@ router.post('/', validateBody(), wrap(async (request, response, next) => {
     response.send(`Added new content with name ${newContent.name}`);
 }));
 
-router.put('/:id', validateBody(), wrap(async (request, response, next) => {
+router.put('/:id', validateNewsBody(), wrap(async (request, response, next) => {
     logger.info(`PUT request to ${request.hostname}${request.baseUrl}`);
     ensureAuthenticated(request, response, next);
 

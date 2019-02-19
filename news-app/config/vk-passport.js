@@ -9,10 +9,10 @@ const Users = require('../schemas/userSchema.js');
 
 const app = express();
 
-module.exports = (passport) => {
+module.exports = (passport, appId, appSecret) => {
     passport.use(new VKontakteStrategy({
-            clientID: vkConfig.VKONTAKTE_APP_ID,
-            clientSecret: vkConfig.VKONTAKTE_APP_SECRET,
+            clientID: appId,
+            clientSecret: appSecret,
             callbackURL: vkConfig.CALLBACK_URL
         },
         (accessToken, refreshToken, profile, done) => {

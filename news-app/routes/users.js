@@ -1,32 +1,41 @@
 const express = require('express');
+const app = express();
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const wrap = require('async-middleware').wrap;
+const {validateUserBody, validateUserRegistrationBody} = require('../validation/paramsValidation.js');
 
 const User = require('../schemas/userSchema.js');
 
-//Login
-router.get('/login', (req, res) => res.render("login"));
+app.use(wrap(function (req, res) {
+    return Promise.reject(x => {
+        next(createError(500));
+    })
+}));
 
-router.post('/login', (req, res, next) => {
+//Login
+router.get('/login', wrap((req, res) => res.render("login")));
+
+router.post('/login', validateUserBody(), wrap((req, res, next) => {
     passport.authenticate('local', {
         successRedirect: '/news',
         failureRedirect: '/users/login',
         failureFlash: true
     })(req, res, next);
-});
+}));
 
 //Logout
-router.get('/logout', (req, res, next) => {
+router.get('/logout', wrap((req, res, next) => {
     req.logout();
     req.flash('success_msg', 'You are logged out');
     res.redirect('/users/login');
-})
+}));
 
 //Registration
-router.get('/register', (req, res) => res.render('register'));
+router.get('/register', wrap((req, res) => res.render('register')));
 
-router.post('/register', (req, res) => {
+router.post('/register', validateUserRegistrationBody(), wrap((req, res) => {
     const {email, password, password2} = req.body;
 
     let errors = [];
@@ -74,6 +83,6 @@ router.post('/register', (req, res) => {
             }
         });
     }
-});
+}));
 
 module.exports = router;

@@ -1,1 +1,3 @@
 /news-app/node_modules
+/news-app/log
+/news-app/.env

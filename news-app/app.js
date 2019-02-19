@@ -16,11 +16,15 @@ var newsRouter = require('./routes/news');
 
 const app = express();
 
+require('dotenv').config();
+const VKONTAKTE_APP_ID = process.env.VKONTAKTE_APP_ID;
+const VKONTAKTE_APP_SECRET = process.env.VKONTAKTE_APP_SECRET;
+
 //passport config
 require('./config/passport.js')(passport);
 
 //vk passport config
-require('./config/vk-passport.js')(passport);
+require('./config/vk-passport.js')(passport, VKONTAKTE_APP_ID, VKONTAKTE_APP_SECRET);
 
 //db connection
 const connectionString = require('./config/keys.js').ConnectionString;
