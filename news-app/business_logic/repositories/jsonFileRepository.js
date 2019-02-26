@@ -11,6 +11,9 @@ class JsonFileRepository {
     }
 
     async createItem(item) {
+        if (!item) {
+            throw new Error();
+        }
 
         const content = await this.readFileAsync(this.path, 'utf-8');
         let news = JSON.parse(content);
@@ -39,6 +42,10 @@ class JsonFileRepository {
     }
 
     async updateItem(itemId, newContent) {
+        if (!newContent || typeof itemId !== number) {
+            throw new Error();
+        }
+
         const content = await this.readFileAsync(this.path, 'utf-8');
         let news = JSON.parse(content);
 
@@ -64,6 +71,9 @@ class JsonFileRepository {
     }
 
     async deleteItem(itemId) {
+        if (typeof itemId !== number){
+            throw new Error();
+        }
 
         const content = await this.readFileAsync(this.path, 'utf-8');
         let news = JSON.parse(content);

@@ -31,6 +31,10 @@ router.get('/', wrap(async (req, res, next) => {
 router.get('/:id', wrap(async (request, response, next) => {
     logger.info(`GET request to ${request.hostname}${request.baseUrl}/${request.params.id}`);
 
+    if (typeof request.params.id != number){
+        next(createError(302));
+    }
+
     const item = await new NewsRepository().readItem(request.params.id);
     
     if (item != null){

@@ -5,6 +5,10 @@ const News = require('../../schemas/newsSchema.js');
 
 class NewsRepository {
     async createItem(item) {
+        if (!item) {
+            throw new Error();
+        }
+
         return await News.findOne().sort('-order')
             .exec(async (err, obj) =>
             {
@@ -39,6 +43,10 @@ class NewsRepository {
     }
 
     async updateItem(itemId, newContent) {
+        if (!newContent || typeof itemId !== number){
+            throw new Error("Not supported input param");
+        }
+
         return await News.updateOne(
             { order: itemId }, 
             { $set: { name: newContent.name, url: newContent.url } },
@@ -52,6 +60,10 @@ class NewsRepository {
     }
 
     async deleteItem(itemId) {
+        if (typeof itemId !== number || itemId <= 0) {
+            throw new Error("Not supported input param");
+        }
+
         return await News.deleteOne({order: itemId}, (err, obj) => {
             if (err){
                 throw new Error(err);

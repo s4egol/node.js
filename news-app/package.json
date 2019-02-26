@@ -3,7 +3,22 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "test": "mocha ./tests --timeout 10000 --exit",
+    "coverage": "nyc --reporter=lcov --reporter=text-lcov npm test"
+  },
+  "nyc": {
+    "register": "babel-register",
+    "include": [
+      "**/*.js",
+      "./*.js"
+    ],
+    "exclude": [
+      "**/node_modules/**",
+      "**/tests/**",
+      "**/coverage/**"
+    ],
+    "all": true
   },
   "dependencies": {
     "async-middleware": "^1.2.1",
@@ -28,5 +43,11 @@
     "passport-vkontakte": "^0.3.2",
     "pug": "2.0.0-beta11",
     "winston": "^3.1.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "mocha": "^6.0.2",
+    "nyc": "^13.3.0"
   }
 }
