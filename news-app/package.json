@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "mocha ./tests --timeout 10000 --exit",
+    "test": "mocha **/_test_/*.js --timeout 10000 --exit",
     "coverage": "nyc --reporter=lcov --reporter=text-lcov npm test"
   },
   "nyc": {
@@ -48,6 +48,7 @@
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
     "mocha": "^6.0.2",
-    "nyc": "^13.3.0"
+    "nyc": "^13.3.0",
+    "sinon": "^7.2.4"
   }
 }

@@ -9,37 +9,43 @@ class NewsRepository {
             throw new Error();
         }
 
-        return await News.findOne().sort('-order')
-            .exec(async (err, obj) =>
-            {
-                var max = !obj.order ? 1 : obj.order + 1;
+        var objects = await this.readItem();
+        var maxOrder = 0;
+        objects.map(x => {
+            if (x.order > maxOrder){
+                maxOrder = x.order;
+            }
+        })       
 
-                const newNews = new News({
-                    order: max,
-                    name: item.name,
-                    url: item.url
-                });
-                
-                return await newNews.save().then((err, obj) => {
-                    if (err){
-                        throw new Error(err);
-                    }
+        const newNews = new News({
+            order: maxOrder + 1,
+            name: item.name,
+            url: item.url
+        });
+            
+        return await News.create(newNews)
+            .then((err, obj) => {
+                if (err){
+                    throw new Error(err);
+                }
 
-                    return obj;
-                })
-            });         
+                return true;
+            })
+            .catch(err => false);
     }
 
     async readItem(itemId){
         if (!itemId){
             return await News.find({}, (err, obj) => {
                 return obj;
-            });
+            })
+            .catch(err => null);
         }
 
         return await News.find({order: itemId}, (err, obj) => {
             return obj;
-        });
+        })
+        .catch(err => null);;
     }
 
     async updateItem(itemId, newContent) {
@@ -56,7 +62,8 @@ class NewsRepository {
                 }
 
                 return obj;
-            });
+            })
+            .catch(err => null);;
     }
 
     async deleteItem(itemId) {
